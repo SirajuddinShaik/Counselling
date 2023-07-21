@@ -1,0 +1,47 @@
+<%- include("partials/header") -%> 
+<title>Register</title>
+
+<body class="text-center">
+
+    <main class="form-signin w-100 m-auto">
+        <div class="varible">
+      <form action="/register" method="post">
+        <img class="mb-4" src="images/black.png" alt="" width="75" height="100">
+        <h1 class="h3 mb-3 fw-normal">Register VVIT</h1>
+    
+        <div class="form-floating top">
+          <input type="text" class="form-control top" name="username" placeholder="UserName">
+          <label for="floatingInput">UserName</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control middle" name="password" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control bottom" name="confirmPassword" placeholder="Confirm Password">
+          <label for="floatingPassword">Confirm Password</label>
+        </div>
+        <br>
+        <div class="form-floating">
+          <input type="password" class="form-control bottom" name="securityKey" placeholder="Security Key">
+          <label for="floatingPassword">Security Key</label>
+        </div>
+        <br>
+        <select id="selectOption" name="type" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onChange="modes()">
+            <option value="" selected>Select type of User</option>
+            <option value="1">Administrator</option>
+            <option value="2">Counseller</option>
+          </select>
+    
+        <br>
+        <button id="logbutton" class="w-100 btn btn-lg btn-primary" type="submit" disabled="true">Register</button>
+      </form>
+      <script src="script/index.js"></script>
+    </div>
+    </main>
+    
+    
+    
+    </body>
+    </html>
+    

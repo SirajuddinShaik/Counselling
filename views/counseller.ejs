@@ -1,0 +1,141 @@
+<%- include("partials/header") -%>
+
+  <body style="background-color: rgb(241, 175, 175);">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"></script>
+
+    <!-- TIttle -->
+    <section id="title">
+
+      <% let cadd="/add/counseller/" +cname %>
+
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark" id="navabar">
+          <a class="navbar-brand" style="font-size: 3.5rem;" herf="">VVIT</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="https://www.vvitguntur.com/"
+                  href="https://www.vvitguntur.com/">Home</a>
+              </li>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="" href="https://lms.imsprime.com/UI/Index/loginVVIT.php">Erp
+                    Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" herf="">Download</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img class="profile-img" style="height: 3rem; width: 3rem;" src="/images/clg-img.jpeg" alt="">
+                  </a>
+                  <ul class="dropdown-menu">
+                    <% let profile="/counseller/" +cname+"/profile" %>
+                      <li><a class="dropdown-item" href=<%=profile %> >Profile</a></li>
+                      <li><a class="dropdown-item" href=<%=cadd %> >Add Student</a></li>
+                      <li><a class="dropdown-item" href="/changepassword">Change Password</a></li>
+                      <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+          </div>
+        </nav>
+
+
+
+
+        <!-- Title -->
+
+
+        <div class="row">
+          <div class="col-lg-6 col-mg-12">
+            <h1
+              style="font-family: montserrat; font-size: 2.5rem; font-weight: 800; line-height: 3rem; color: aliceblue;">
+              Welcome , <%= cname %>
+            </h1>
+
+            <% if(type==2){ %>
+              <div class="mb-3 col-lg-10">
+                <br>
+                <% let send="/send/counseller/" +cname %>
+                  <form action=<%=send %> method="post">
+                    <h4><label for="counsellorMessage" style="color:black" class="form-label">Message to Students
+                      </label>
+
+                      </h3>
+                      <textarea name="message" style="font-family: montserrat;" class="form-control"
+                        rows="6"></textarea>
+                      <br>
+                      <input type="submit">
+                  </form>
+              </div>
+              <% } %>
+
+          </div>
+          <div class="col-lg-6 col-mg-12" id="tile-img">
+            <img id="title-img" src="/images/clg-img.jpeg" alt="vvit college">
+          </div>
+        </div>
+
+
+
+    </section>
+
+
+    <section id="students">
+      <!-- <div >
+        <hr class="fivedot" >
+        <br>
+      </div> -->
+      <h1 style="font-family: montserrat; font-size: 2.5rem; font-weight: 800; line-height: 3rem; color:#440808;">
+        Counselling Students...</h1>
+      <br>
+      <% let sname %>
+        <% students.forEach(function(student){ %>
+          <div class="card-details">
+            <% sname="/counseller/" + cname +"/"+ student._id %>
+              <!-- <form action=<%= sname %> method="post"> -->
+              <h3 class="student-ele col-lg-5 col-mg-5 col-sm-12">
+                <%= student.fname+" " +student.lname %> </h3>
+            <h3 class=" student-ele col-lg-3 col-mg-5 col-sm-12" style="border-left: none; border-width: 5rem;">
+                  <%= student._id %>
+              </h3>
+              <input type="text" value=<%=student._id %> name="id" hidden>
+
+              <div class="student-ele col-lg-3 col-mg-5 col-sm-12" style="padding-left: 5rem;">
+                <!-- <% let view="/counseller/"+cname+"/" %>  -->
+                <a class="btn btn-outline-light" href=<%=sname %> style="height: 2.5rem; width: 10rem;">View More</a>
+              </div>
+              <!-- </form> -->
+
+          </div>
+          <br>
+          <% }); %>
+
+
+
+            <% let add="/add/counseller/" +cname %>
+              <div style="text-align: center;"><a class="btn btn-outline-dark btn-lg" href=<%=cadd %>>Add</a></div>
+
+
+    </section>
+
+
+
+
+
+    <div style="background-color: white;">
+      <hr class="fivedot">
+      <br>
+    </div>
+
+    <%- include("partials/footer") -%>

@@ -1,0 +1,129 @@
+<%- include("partials/header") -%>
+  <title>Profile</title>
+
+  <body style="padding-top: 5rem; background-color: #db5656;">
+    <% let saveloc="/save" +type1+"/"+name %>
+      <form method="post" action=<%=saveloc %>>
+        <table>
+          <tr>
+            <td>
+              <div class="col-lg-3 col-sm-12" style="padding-right: 10rem; padding-left: 5rem;"><img class="profile-img"
+                  src="/images/clg-img.jpeg" alt=""></div>
+            </td>
+            <td>
+              <div>
+                <div class="mb-3 col-lg-4 col-mg-5 profile-element-top">
+                  <label for="branch" class="form-label">Branch*</label>
+                  <input type="text" class="form-control" name="branch" id="branch" value=<%=details.branch %>>
+                </div>
+                <div class="mb-3 col-lg-4 col-mg-5 profile-element-top">
+                  <label for="regdno" class="form-label">Registration No.*</label>
+                  <input type="text" class="form-control" name="regdno" id="regdno" value=<%=details.regdno %>>
+                </div>
+                <% if(type==3){ %>
+                  <div class="mb-3 col-lg-4 col-mg-5 profile-element-top">
+                    <label for="fee" class="form-label">Fee Pending</label>
+                    <input type="number" class="form-control" name="fee" id="fee"
+                      value=<%=details.totalFee-details.feePaid %>>
+                  </div>
+
+                  <div class="mb-3 col-lg-4 col-mg-5 profile-element-top">
+                    <label for="branch" class="form-label">Attendence</label>
+                    <input type="text" class="form-control" name="attendance" id="attendance"
+                      value=<%=details.attendance %> >
+                  </div>
+                  <% } %>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <br><br>
+
+
+
+        <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+          <label for="fname" class="form-label">First Name*</label>
+          <input type="text" class="form-control" name="fname" id="fname" value=<%=details.fname %>>
+        </div>
+
+
+        <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+          <label for="lname" class="form-label">Last Name*</label>
+          <input type="text" class="form-control" name="lname" id="lname" value=<%=details.lname %>>
+        </div>
+
+
+        <div class="mb-3 col-lg-5 col-mg-12 profile-element">
+          <label for="email" class="form-label">Email address*</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
+            value=<%=details.email %>>
+        </div>
+
+
+        <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+          <label for="regdno" class="form-label">Registration No.*</label>
+          <input type="text" class="form-control" value=<%=details.regdno %>>
+        </div>
+
+
+        <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+          <label for="mobile" class="form-label">Mobile No.</label>
+          <input type="number" class="form-control" name="mobile" id="mobile" value=<%=details.mobile %>>
+        </div>
+
+
+        <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control" name="address" id="address" value=<%=details.adress %> >
+        </div>
+
+        <% if(type===3){ %>
+          <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+            <label for="fatherName" class="form-label">Father's Name</label>
+            <input type="text" class="form-control" name="fatherName" id="fatherName" value=<%=details.fatherName %>>
+          </div>
+
+          <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+            <label for="fmobile" class="form-label">Father's Mobile No.</label>
+            <input type="number" class="form-control" name="fmobile" id="fmobile" value=<%=details.fmobile %>>
+          </div>
+
+
+          <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+            <label for="motherName" class="form-label">Mother's Name</label>
+            <input type="text" class="form-control" name="motherName" id="motherName" value=<%=details.motherName %>>
+          </div>
+
+          <div class="mb-3 col-lg-5 col-mg-1 profile-element">
+            <label for="mmobile" class="form-label">Mother's Mobile No.</label>
+            <input type="number" class="form-control" name="mmobile" id="mmobile" value=<%=details.mmobile %>>
+          </div>
+          <div class="mb-3 col-lg-11 col-mg-2 profile-element">
+            <label for="mmobile" class="form-label">Message To Counsellor: </label>
+            <input type="text" class="form-control" name="sMessage" id="sMessage" value=<%=details.studentMessage %>>
+          </div>
+          <% } %>
+
+            <input type="text" name="type1" value=<%=type1 %> hidden>
+            <input type="text" name="idname" value=<%=name %> hidden>
+            <input type="text" name="type" value=<%=type %> hidden>
+
+            <% let back=type1+"/"+name %>
+              <div class="col-lg-5 col-sm-12 profile-btn"><a id="cancel" class="btn btn-outline-warning btn-lg"
+                  href=<%=back %>>Cancel</a></div>
+              <div class="col-lg-5 col-sm-12 profile-btn"><button class="btn btn-outline-dark btn-lg">Save</button>
+              </div>
+
+      </form>
+      <div class="col-lg-5 col-sm-12 profile-btn"><a id="back" class="btn btn-outline-light btn-lg" href=<%=type1
+          %>>Back</a></div>
+      <div class="col-lg-5 col-sm-12 profile-btn"><button onclick="edit()"
+          class="btn btn-outline-dark btn-lg">Edit</button></div>
+      <br>
+      <br>
+      <br>
+
+      <script src="/script/profile.js"></script>
+  </body>
+
+  </html>
